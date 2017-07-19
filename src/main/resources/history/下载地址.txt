@@ -1,0 +1,1 @@
+http://baidu.lecai.com/lottery/draw/phase_result_download.php?file_format=txt&lottery_type=50&year=2002
