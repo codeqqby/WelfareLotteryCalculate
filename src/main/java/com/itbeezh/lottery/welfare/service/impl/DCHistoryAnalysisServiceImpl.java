@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 
 /**
  * Created by szwb004 on 2017-07-10.
@@ -26,15 +27,12 @@ public class DCHistoryAnalysisServiceImpl implements DCHistoryAnalysisService {
     public void analysisHistoryData(String year) throws Exception {
         File historyFile = ResourceUtils.getFile("classpath:history/"+year+".txt");
         Files.lines(historyFile.toPath(), StandardCharsets.UTF_8)
-                .forEach((str) -> {
-                    dcHistoryDataRepository.save(generateDCHistoryData(str));
-                });
-
+                .forEach((str) -> dcHistoryDataRepository.save(generateDCHistoryData(str)));
     }
 
     @Override
     public void analysisHistoryData(String serialNo, String balls, String kjDate) {
-
+        dcHistoryDataRepository.save(generateDCHistoryData(new StringJoiner("   ").add(serialNo).add(balls).add(kjDate).toString()));
     }
 
     private DCHistoryData generateDCHistoryData(String historyDataStr){
