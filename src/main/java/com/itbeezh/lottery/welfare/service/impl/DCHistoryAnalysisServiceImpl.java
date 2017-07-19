@@ -1,4 +1,5 @@
 package com.itbeezh.lottery.welfare.service.impl;
+
 import com.itbeezh.lottery.welfare.entity.DCHistoryData;
 import com.itbeezh.lottery.welfare.repository.DCHistoryDataRepository;
 import com.itbeezh.lottery.welfare.service.DCHistoryAnalysisService;
@@ -7,14 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.text.DateFormat;
-import java.text.ParsePosition;
-import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,6 +29,11 @@ public class DCHistoryAnalysisServiceImpl implements DCHistoryAnalysisService {
                 .forEach((str) -> {
                     dcHistoryDataRepository.save(generateDCHistoryData(str));
                 });
+
+    }
+
+    @Override
+    public void analysisHistoryData(String serialNo, String balls, String kjDate) {
 
     }
 
